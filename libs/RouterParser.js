@@ -1,8 +1,13 @@
 var _ = require('lodash');
+var proxy = require('express-http-proxy');
 
 var httpDefaults = {
     type: 'http',
     method: 'get'
+};
+
+var proxyDefaults = {
+
 };
 
 var wsDefaults = {
@@ -25,6 +30,8 @@ var RouterParser = function(module) {
     if (!_.has(routerJson, 'type') || routerJson.type === 'http') {
         _.defaults(routerJson, httpDefaults);
         validate(routerJson, 'method', module.path);
+    } else if (routerJson.type === 'proxy') {
+        _.defaults(routerJson, proxyDefaults);
     } else if (routerJson.type === 'ws') {
         _.defaults(routerJson, wsDefaults);
     } else {
@@ -62,6 +69,12 @@ var RouterParser = function(module) {
                 res.send(routerJson.responseData);
             }
         });
+    } else if (routerJson.type === 'proxy') {
+        this.app[routerJson.method](routerJson.when, proxy(routerJson.host, {
+            forwardPath: function(req, res) {
+                return routerJson.path || require('url').parse(req.url).path;
+            }
+        }));
     } else {
         var WebSocketServer = require('ws').Server;
         var wss = new WebSocketServer({

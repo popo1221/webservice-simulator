@@ -43,5 +43,7 @@
     "should": "^7.0.2",
     "ws": "^0.7.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "express-http-proxy": "^0.6.0"
+  }
 }
