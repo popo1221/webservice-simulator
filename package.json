@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leftstick/webservice-simulator.git"
+    "url": "git+https://github.com/leftstick/webservice-simulator.git"
   },
   "keywords": [
     "webservice",
@@ -19,16 +19,12 @@
     "libs",
     "middlewares"
   ],
-  "author": {
-    "name": "Howard.Zuo",
-    "email": "leftstick@qq.com",
-    "url": "https://github.com/leftstick"
-  },
+  "author": "Howard.Zuo <leftstick@qq.com> (https://github.com/leftstick)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leftstick/webservice-simulator/issues"
+    "url": "https://github.com/gpsjuw/webservice-simulator/issues"
   },
-  "homepage": "https://github.com/leftstick/webservice-simulator",
+  "homepage": "https://github.com/gpsjuw/webservice-simulator",
   "engines": {
     "node": ">= 0.10"
   },
@@ -45,5 +41,10 @@
   },
   "devDependencies": {
     "express-http-proxy": "^0.6.0"
+  },
+  "directories": {
+    "doc": "docs",
+    "example": "example",
+    "test": "test"
   }
 }
